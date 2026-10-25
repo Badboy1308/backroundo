@@ -1,0 +1,106 @@
+BACKROUNDO – FREEWARE LICENSE (English translation)
+===================================================
+
+This is a translation for your convenience. Only the German version
+(Lizenz.txt) is legally binding.
+
+Copyright © 2026 Marco Schulz. All rights reserved.
+Contact: marco.sa.schulz@googlemail.com
+
+By installing or using Backroundo (the "Software") you agree to these terms.
+
+
+1. Right of use
+---------------
+The Software is freeware. You receive a simple, free, perpetual right to
+use the Software on any number of your own devices for private and
+professional purposes.
+
+
+2. Redistribution
+-----------------
+You may pass the Software on to others free of charge, but only
+  a) unchanged,
+  b) complete (with this license and the manual), and
+  c) without asking for money or any other consideration.
+
+Publishing the Software on download portals, magazine CDs/DVDs or in
+software collections requires the author's prior consent.
+
+
+3. Not permitted
+----------------
+- selling or renting the Software or including it in paid offerings,
+- modifying, translating, decompiling or reverse engineering the
+  Software, except where expressly permitted by law (Section 69e of the
+  German Copyright Act),
+- removing or altering copyright, trademark or license notices,
+- distributing the Software under another name or as your own work.
+
+All rights not expressly granted remain with the author.
+
+
+4. Images and third-party content
+---------------------------------
+Backroundo does not ship any images; it loads them from the sources you
+choose. The rights to the images belong to their respective authors or
+institutions.
+
+Unsplash: The Unsplash feature requires your own free Unsplash access key.
+The photos are subject to the Unsplash License. As the holder of the access
+key, you are responsible for complying with Unsplash's terms of use and API
+guidelines.
+
+Wikimedia Commons: The images are under free licenses (e.g. Creative
+Commons) or in the public domain. Author and license are shown in the app;
+the respective license terms apply.
+
+The Metropolitan Museum of Art: Backroundo only uses works the museum marks
+as public domain (Open Access, CC0).
+
+Your own images: You are responsible for images from your own folder.
+
+"Unsplash" is a trademark of Unsplash Inc., "Wikimedia" of the Wikimedia
+Foundation, "The Met" of the Metropolitan Museum of Art, "Mac" and "macOS"
+are trademarks of Apple Inc. Backroundo is not affiliated with or endorsed
+by these organizations.
+
+
+5. Warranty and liability
+-------------------------
+The Software is provided free of charge. The author is therefore liable
+only for intent and gross negligence. Liability for defects applies only
+if they were fraudulently concealed.
+
+This does not affect liability for injury to life, body or health, or
+under the German Product Liability Act.
+
+No warranty is given that the Software is error-free, runs without
+interruption or works on every system. You use it at your own risk.
+
+
+6. Privacy
+----------
+Backroundo does not collect, store or transmit any personal data to the
+author. There are no ads, no tracking and no statistics.
+
+All settings and images are stored only locally on your Mac (settings in
+the macOS user defaults, images under ~/Pictures/Backroundo).
+
+Depending on the image sources you choose, the app connects directly to the
+servers of Unsplash (api.unsplash.com, images.unsplash.com), Wikimedia
+(commons.wikimedia.org, upload.wikimedia.org) or the Metropolitan Museum
+(collectionapi.metmuseum.org, images.metmuseum.org). Technically necessary
+data such as your IP address and, if applicable, your own key are
+transmitted. The privacy policies of the respective providers apply.
+
+
+7. Final provisions
+-------------------
+The law of the Federal Republic of Germany applies.
+
+If any provision of this license is invalid, the validity of the remaining
+provisions is not affected.
+
+
+Status: October 2026 · Backroundo version 1.2

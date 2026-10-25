@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Backroundo">
+<meta property="og:description" content="A free Mac app for ever-changing wallpapers.">
+<link rel="alternate" hreflang="en" href="https://badboy1308.github.io/backroundo/en/">
+<link rel="alternate" hreflang="de" href="https://badboy1308.github.io/backroundo/">
+<meta property="og:image" content="https://badboy1308.github.io/backroundo/icon.png">
+<title>Backroundo</title>
+<meta name="description" content="Backroundo – a free Mac app that changes your wallpaper with images from Wikimedia, The Met, Unsplash or your own photos.">
+<link rel="icon" href="../icon.png">
+<style>
+@font-face { font-family: "Unbounded"; font-weight: 500; font-display: swap; src: url("../fonts/unbounded-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Unbounded"; font-weight: 700; font-display: swap; src: url("../fonts/unbounded-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 400; font-display: swap; src: url("../fonts/instrument-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 500; font-display: swap; src: url("../fonts/instrument-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 600; font-display: swap; src: url("../fonts/instrument-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url("../fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+/* Layout: Dämmerungs-Band oben mit lebendem MacBook-Demo, darunter ruhige Textspalte auf leicht violettem Grund */
+:root {
+  --bg: #F6F4F9;
+  --surface: #FFFFFF;
+  --fg: #1F1A2B;
+  --muted: #625B71;
+  --line: #E3DEEA;
+  --violet: #4A2C63;
+  --accent: #C9483C;
+  --accent-fg: #FFFFFF;
+  --code-bg: #EEEAF3;
+  --dusk-1: #1A1430;
+  --dusk-2: #3B2452;
+  --dusk-3: #E86A5C;
+  --sun: #FFD79A;
+  --on-dusk: #F4EEFA;
+  --on-dusk-muted: #C8BDD8;
+  --font-display: "Unbounded", "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: "Instrument Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14111B; --surface: #1D1827; --fg: #EDE8F5; --muted: #A69FB5; --line: #2E2839;
+    --violet: #C3A9E3; --accent: #F07A6C; --accent-fg: #1A1022; --code-bg: #241E30;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14111B; --surface: #1D1827; --fg: #EDE8F5; --muted: #A69FB5; --line: #2E2839;
+  --violet: #C3A9E3; --accent: #F07A6C; --accent-fg: #1A1022; --code-bg: #241E30;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--violet); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.15; margin: 0; }
+h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1rem); font-weight: 700; color: var(--violet); }
+h3 { font-size: 1rem; font-weight: 500; letter-spacing: .01em; }
+p { margin: 0; }
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(60% 70% at 78% 85%, rgba(232,106,92,.35), transparent 70%),
+    linear-gradient(160deg, var(--dusk-1) 0%, var(--dusk-2) 70%, #5A2F5E 100%);
+  color: var(--on-dusk);
+  overflow: hidden;
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding-block: clamp(40px, 7vw, 88px) clamp(48px, 7vw, 96px);
+}
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.lang { display: flex; gap: 2px; padding: 3px; border-radius: 99px; border: 1px solid rgba(244,238,250,.22); font-size: .8rem; font-weight: 600; letter-spacing: .04em; }
+.lang a, .lang span { padding: 4px 10px; border-radius: 99px; color: var(--on-dusk-muted); text-decoration: none; }
+.lang span { background: rgba(244,238,250,.16); color: var(--on-dusk); }
+.lang a:hover { color: var(--on-dusk); }
+.brand img { width: 44px; height: 44px; }
+.brand span { font-family: var(--font-display); font-weight: 500; font-size: .95rem; letter-spacing: .02em; }
+.hero h1 {
+  font-size: clamp(2.3rem, 1.4rem + 3.6vw, 3.9rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  background: linear-gradient(90deg, var(--sun), var(--dusk-3) 85%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-bottom: .08em;
+}
+.lede { margin-top: 18px; font-size: 1.15rem; color: var(--on-dusk-muted); max-width: 34ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: 12px;
+  font-weight: 600; font-size: 1rem; text-decoration: none;
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.btn-primary { background: var(--dusk-3); color: #1A1022; box-shadow: 0 8px 24px rgba(232,106,92,.35); }
+.btn-ghost { color: var(--on-dusk); border: 1px solid rgba(244,238,250,.28); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.facts {
+  margin-top: 18px; font-size: .85rem; color: var(--on-dusk-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- MacBook-Demo ---------- */
+.mac { width: 100%; max-width: 560px; justify-self: end; }
+.lid {
+  position: relative; aspect-ratio: 16 / 10.4; max-width: 100%;
+  background: #111114; border-radius: 16px; padding: 3.2%;
+  border: 1.5px solid #4a4652;
+  box-shadow: 0 30px 60px rgba(0,0,0,.45);
+}
+.screen { position: relative; width: 100%; height: 100%; border-radius: 6px; overflow: hidden; background: #0E0C18; }
+.notch { position: absolute; top: 3.2%; left: 50%; transform: translateX(-50%); width: 13%; height: 4.2%; background: #111114; border-radius: 0 0 8px 8px; z-index: 5; }
+.scene { position: absolute; inset: 0; opacity: 0; animation: fade 20s infinite; }
+.scene svg { width: 100%; height: 100%; display: block; }
+.scene:nth-child(1) { animation-delay: 0s; }
+.scene:nth-child(2) { animation-delay: 4s; }
+.scene:nth-child(3) { animation-delay: 8s; }
+.scene:nth-child(4) { animation-delay: 12s; }
+.scene:nth-child(5) { animation-delay: 16s; }
+@keyframes fade {
+  0% { opacity: 0; } 7% { opacity: 1; } 20% { opacity: 1; } 27% { opacity: 0; } 100% { opacity: 0; }
+}
+.menubar {
+  position: absolute; inset: 0 0 auto; height: 7%;
+  background: rgba(20,16,30,.35); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: flex-end; gap: 9px;
+  padding-right: 3%; z-index: 4;
+  font: 600 clamp(7px, 1.1vw, 10px)/1 var(--font-body); color: rgba(255,255,255,.9);
+}
+.menubar .mb-icon { width: clamp(9px, 1.4vw, 13px); height: auto; opacity: .95; }
+.menubar .mb-active { background: rgba(255,255,255,.22); border-radius: 4px; padding: 2px 4px; display: flex; }
+
+.pop {
+  position: absolute; top: 9%; right: 3%; width: 42%; z-index: 6;
+  background: rgba(36,30,48,.82); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 10px;
+  padding: 3.2%; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  color: #fff; font-family: var(--font-body);
+}
+.pop-head { display: flex; align-items: center; gap: 5px; font: 700 clamp(6px, 1.05vw, 10px)/1 var(--font-display); margin-bottom: 7%; }
+.pop-head img { width: clamp(9px, 1.5vw, 14px); }
+.pop-prev { position: relative; aspect-ratio: 16 / 10; max-width: 100%; border-radius: 6px; overflow: hidden; }
+.pop-prev .scene { animation-name: fade; }
+.credit {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 14% 6% 5%;
+  background: linear-gradient(transparent, rgba(0,0,0,.6));
+  font-size: clamp(5px, .85vw, 8px); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pop-row { display: flex; gap: 4%; margin-top: 6%; }
+.pop-btn { flex: 1; height: clamp(10px, 2vw, 18px); border-radius: 4px; background: var(--dusk-3); }
+.pop-btn.sm { flex: 0 0 18%; background: rgba(255,255,255,.12); }
+.pop-chips { display: flex; gap: 3%; margin-top: 5%; }
+.pop-chips i { flex: 1; height: clamp(5px, 1vw, 9px); border-radius: 99px; background: rgba(255,255,255,.12); }
+.pop-chips i:first-child { background: var(--dusk-3); opacity: .8; }
+
+.base {
+  height: clamp(8px, 1.6vw, 13px); width: 112%; margin-left: -6%;
+  background: linear-gradient(#dcdbe0, #8d8b94); border-radius: 0 0 14px 14px;
+  position: relative;
+}
+.base::after { content: ""; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 18%; height: 40%; background: #6f6d76; border-radius: 0 0 6px 6px; }
+
+/* ---------- Abschnitte ---------- */
+section { padding-block: clamp(56px, 8vw, 96px); }
+section + section { border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; max-width: 62ch; }
+.sec-head p { color: var(--muted); }
+
+.features {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 40px;
+}
+.feature { display: grid; gap: 8px; align-content: start; }
+.feature svg { width: 26px; height: 26px; color: var(--accent); }
+.feature p { color: var(--muted); font-size: .98rem; }
+
+.sources { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.source {
+  display: grid; grid-template-columns: 210px minmax(0, 1fr) auto;
+  gap: 8px 28px; align-items: baseline;
+  padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.source h3 { font-size: 1.02rem; }
+.source p { color: var(--muted); }
+.tag {
+  font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 99px; white-space: nowrap;
+  border: 1px solid var(--line); color: var(--muted);
+}
+.tag.free { color: var(--violet); border-color: color-mix(in srgb, var(--violet) 40%, transparent); }
+
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: step; }
+.step { display: grid; gap: 10px; align-content: start; }
+.step .n {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--accent);
+  line-height: 1;
+}
+.step p { color: var(--muted); }
+
+.note {
+  margin-top: 40px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: clamp(20px, 3vw, 32px);
+  display: grid; gap: 14px; max-width: 760px;
+}
+.note h3 { font-size: 1.05rem; color: var(--violet); }
+.note p, .note li { color: var(--muted); }
+.note ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+.cmd {
+  display: flex; align-items: stretch; gap: 0; max-width: 100%;
+  background: var(--code-bg); border-radius: 10px; overflow: hidden;
+}
+.cmd code {
+  flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap;
+  font-family: var(--font-mono); font-size: .86rem; padding: 12px 14px; color: var(--fg);
+}
+.cmd button {
+  border: 0; border-left: 1px solid var(--line); background: transparent; color: var(--violet);
+  font: 600 .85rem var(--font-body); padding: 0 16px; cursor: pointer;
+}
+
+.legal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.legal > div { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.legal p, .legal li { color: var(--muted); font-size: .96rem; }
+.legal ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+.legal h3 { font-size: 1rem; color: var(--fg); margin-top: 8px; }
+address { font-style: normal; color: var(--muted); }
+
+footer { padding-block: 32px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+footer a { color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .mac { justify-self: center; }
+  .features, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .source { grid-template-columns: minmax(0, 1fr) auto; }
+  .source p { grid-column: 1 / -1; }
+  .legal { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .features, .steps { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene { animation: none; }
+  .scene:nth-child(1) { opacity: 1; }
+  .btn { transition: none; }
+}
+</style>
+
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2D5C"/><stop offset=".6" stop-color="#E86A5C"/><stop offset="1" stop-color="#FFC478"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B3D63"/><stop offset=".6" stop-color="#2E8BC0"/><stop offset="1" stop-color="#B1D4E0"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E4D3A"/><stop offset=".6" stop-color="#6FA36B"/><stop offset="1" stop-color="#D9F0C2"/></linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B0C2A"/><stop offset=".6" stop-color="#2C2C6C"/><stop offset="1" stop-color="#5B4FA8"/></linearGradient>
+    <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E07A3F"/><stop offset=".6" stop-color="#F2A65A"/><stop offset="1" stop-color="#F8D49B"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="topbar"><div class="brand"><img src="../icon.png" alt="" width="44" height="44"><span>Backroundo</span></div><nav class="lang" aria-label="Language"><a href="../" hreflang="de" lang="de">DE</a><span aria-current="page">EN</span></nav></div>
+      <h1>Your Mac, new every day.</h1>
+      <p class="lede">Backroundo changes your wallpaper automatically – with hand-picked photos, public-domain paintings or your own pictures. Smoothly cross-faded, right from the menu bar. In English and German.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="../downloads/Backroundo-1.2.dmg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
+          Download free
+        </a>
+        <a class="btn btn-ghost" href="#installation">How to install</a>
+      </div>
+      <p class="facts">Version 1.2 · 1.3 MB · macOS 13 or later · Apple silicon &amp; Intel</p>
+    </div>
+
+    <div class="mac" aria-label="Animation: Backroundo changing the wallpaper on a MacBook">
+      <div class="lid">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scenes">
+            <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g1)"/><circle cx="112" cy="36" r="13" fill="#FFE2A0"/><polygon points="0,64 30,34 52,56 80,30 110,58 135,44 160,62 160,100 0,100" fill="#7A3E62"/><polygon points="0,82 28,62 55,76 84,58 116,74 140,64 160,78 160,100 0,100" fill="#3A2348"/></svg></div>
+            <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g2)"/><circle cx="40" cy="30" r="10" fill="#FFFFFF" fill-opacity=".85"/><polygon points="0,70 40,62 80,68 120,60 160,66 160,100 0,100" fill="#1B5E85"/><polygon points="0,84 50,78 100,84 160,78 160,100 0,100" fill="#0B2E4A"/></svg></div>
+            <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g3)"/><circle cx="120" cy="28" r="11" fill="#FFF6C8"/><polygon points="0,60 20,40 36,58 60,30 88,60 112,42 140,62 160,50 160,100 0,100" fill="#2F6B45"/><polygon points="0,80 24,64 48,78 76,62 104,80 132,66 160,80 160,100 0,100" fill="#143524"/></svg></div>
+            <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g4)"/><circle cx="118" cy="26" r="9" fill="#EDEBFF"/><circle cx="20" cy="18" r=".8" fill="#fff"/><circle cx="52" cy="12" r=".7" fill="#fff"/><circle cx="80" cy="24" r=".6" fill="#fff"/><circle cx="140" cy="44" r=".7" fill="#fff"/><polygon points="0,66 34,40 58,60 90,34 124,62 160,48 160,100 0,100" fill="#2A2560"/><polygon points="0,84 36,66 70,80 104,64 140,80 160,72 160,100 0,100" fill="#120F33"/></svg></div>
+            <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g5)"/><circle cx="56" cy="34" r="14" fill="#FFF4D6"/><polygon points="0,72 40,58 76,70 112,52 160,68 160,100 0,100" fill="#B35C2E"/><polygon points="0,86 46,76 92,86 136,74 160,80 160,100 0,100" fill="#7A3A1A"/></svg></div>
+          </div>
+          <div class="menubar">
+            <span>Mon 9:41</span>
+            <span class="mb-active"><svg class="mb-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="6" width="15" height="12" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v9"/><path d="m5 16 4-4 3 3 2-2 4 3"/></svg></span>
+          </div>
+          <div class="pop" aria-hidden="true">
+            <div class="pop-head"><img src="../icon.png" alt="">Backroundo</div>
+            <div class="pop-prev">
+              <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g1)"/><circle cx="112" cy="36" r="13" fill="#FFE2A0"/><polygon points="0,64 30,34 52,56 80,30 110,58 135,44 160,62 160,100 0,100" fill="#7A3E62"/><polygon points="0,82 28,62 55,76 84,58 116,74 140,64 160,78 160,100 0,100" fill="#3A2348"/></svg><div class="credit">Sunset · Wikimedia Commons</div></div>
+              <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g2)"/><circle cx="40" cy="30" r="10" fill="#FFFFFF" fill-opacity=".85"/><polygon points="0,70 40,62 80,68 120,60 160,66 160,100 0,100" fill="#1B5E85"/><polygon points="0,84 50,78 100,84 160,78 160,100 0,100" fill="#0B2E4A"/></svg><div class="credit">Coast · Unsplash</div></div>
+              <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g3)"/><circle cx="120" cy="28" r="11" fill="#FFF6C8"/><polygon points="0,60 20,40 36,58 60,30 88,60 112,42 140,62 160,50 160,100 0,100" fill="#2F6B45"/><polygon points="0,80 24,64 48,78 76,62 104,80 132,66 160,80 160,100 0,100" fill="#143524"/></svg><div class="credit">Landscape · The Met</div></div>
+              <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g4)"/><circle cx="118" cy="26" r="9" fill="#EDEBFF"/><polygon points="0,66 34,40 58,60 90,34 124,62 160,48 160,100 0,100" fill="#2A2560"/><polygon points="0,84 36,66 70,80 104,64 140,80 160,72 160,100 0,100" fill="#120F33"/></svg><div class="credit">Night sky · Wikimedia Commons</div></div>
+              <div class="scene"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"><rect width="160" height="100" fill="url(#g5)"/><circle cx="56" cy="34" r="14" fill="#FFF4D6"/><polygon points="0,72 40,58 76,70 112,52 160,68 160,100 0,100" fill="#B35C2E"/><polygon points="0,86 46,76 92,86 136,74 160,80 160,100 0,100" fill="#7A3A1A"/></svg><div class="credit">Holiday 2025 · Your folder</div></div>
+            </div>
+            <div class="pop-row"><span class="pop-btn"></span><span class="pop-btn sm"></span><span class="pop-btn sm"></span></div>
+            <div class="pop-chips"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="base"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="funktionen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Small, quiet, beautiful</h2>
+        <p>Backroundo lives as a small icon in the menu bar. One click shows the current image, where it comes from and what you can do next.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg>
+          <h3>Changes on its own</h3>
+          <p>Every 15 minutes, hourly or once a day – or only when you click “Next Wallpaper”.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="10" rx="2"/><rect x="8" y="10" width="13" height="10" rx="2" fill="currentColor" fill-opacity=".15"/></svg>
+          <h3>Smooth transition</h3>
+          <p>The old image fades into the new one in about a second instead of jumping.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+          <h3>Favorites</h3>
+          <p>Click the heart and the image is saved to your favorites folder in “Pictures”.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="9" height="7" rx="1.5"/><rect x="13" y="5" width="9" height="7" rx="1.5"/><path d="M6.5 12v3M17.5 12v3M4 18h5M15 18h5"/></svg>
+          <h3>Multiple displays</h3>
+          <p>The same image everywhere or a different one on each display.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <h3>Starts with your Mac</h3>
+          <p>If you like, Backroundo runs in the background from the moment you log in.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>No data, no ads</h3>
+          <p>No account, no tracking, no statistics. Everything stays on your Mac.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bildquellen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Four image sources</h2>
+        <p>Tick the ones you like. With several sources, Backroundo picks one at random each time. Wikimedia is already on, so the app works right away.</p>
+      </div>
+      <div class="sources">
+        <div class="source">
+          <h3>Wikimedia Commons</h3>
+          <p>The “Picture of the Day” from more than ten years of archive – hand-picked top photos, freely licensed. Author and license appear in the preview.</p>
+          <span class="tag free">No account</span>
+        </div>
+        <div class="source">
+          <h3>Art · The Met</h3>
+          <p>Public-domain landscape and seascape paintings from the Metropolitan Museum of Art in New York, in high resolution.</p>
+          <span class="tag free">No account</span>
+        </div>
+        <div class="source">
+          <h3>Unsplash</h3>
+          <p>High-quality photos by category or search term – mountains, ocean, night, city and more. Needs your own free Unsplash key; the manual explains every step.</p>
+          <span class="tag">Own key</span>
+        </div>
+        <div class="source">
+          <h3>Your own folder</h3>
+          <p>Your holiday photos, family pictures or collection – JPG, PNG, HEIC and more, including subfolders.</p>
+          <span class="tag free">Local</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="installation">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Installation</h2>
+        <p>Takes a minute. The detailed <a href="../Manual.pdf">manual (PDF)</a> is also included in the download.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="n">1</span>
+          <h3>Open the DMG</h3>
+          <p>Double-click <strong>Backroundo-1.2.dmg</strong> in your Downloads folder.</p>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <h3>Drag to Applications</h3>
+          <p>Drag Backroundo onto the <strong>Applications</strong> shortcut, then eject the drive.</p>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <h3>Launch</h3>
+          <p>Open Backroundo from Applications. Its icon appears at the top right of the menu bar.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <h3>“Backroundo can’t be opened”?</h3>
+        <p>Backroundo is free and not registered with Apple as a developer app, so macOS blocks the first launch. Here is how to open it anyway – only once:</p>
+        <ol>
+          <li>Click <strong>Done</strong> in the message.</li>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong> and scroll down.</li>
+          <li>Next to “Backroundo was blocked”, click <strong>Open Anyway</strong> and enter your password.</li>
+        </ol>
+        <p>Or enter this once in the Terminal app:</p>
+        <div class="cmd">
+          <code id="cmd-text">xattr -dr com.apple.quarantine /Applications/Backroundo.app</code>
+          <button type="button" id="copy-btn">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rechtliches">
+    <div class="wrap legal">
+      <div id="kontakt">
+        <h2>Contact</h2>
+        <address>Marco Schulz<br>Email: marco.sa.schulz@googlemail.com</address>
+        <h3>License</h3>
+        <p>Backroundo is freeware: free to use and to pass on unchanged, complete and free of charge. Selling or modifying it is not allowed. All terms are in the <a href="../License.txt">license</a> (English translation; the <a href="../Lizenz.txt">German version</a> is legally binding).</p>
+        <p>“Unsplash” is a trademark of Unsplash Inc., “Wikimedia” of the Wikimedia Foundation, “The Met” of the Metropolitan Museum of Art, “Mac” and “macOS” are trademarks of Apple Inc. Backroundo is not affiliated with these organizations.</p>
+      </div>
+      <div id="datenschutz">
+        <h2>Privacy</h2>
+        <h3>This website</h3>
+        <p>This site is hosted by GitHub Pages (GitHub Inc., USA). When you visit, GitHub processes technically necessary data such as your IP address in server logs to deliver and secure the site (Art. 6(1)(f) GDPR). Details in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>.</p>
+        <p>This site sets no cookies, uses no tracking and loads no third-party content.</p>
+        <h3>The app</h3>
+        <p>Backroundo collects no data. Depending on the image sources you choose, the app connects directly to Wikimedia, the Metropolitan Museum or Unsplash to load images.</p>
+        <h3>Your rights</h3>
+        <p>You have the right to access, rectification, erasure and restriction of processing, and to lodge a complaint with a supervisory authority, e.g. the Bavarian Data Protection Authority (BayLDA). Send requests to the email address above.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Marco Schulz · Backroundo is freeware</span>
+    <nav>
+      <a href="#installation">Installation</a>
+      <a href="../Manual.pdf">Manual</a>
+      <a href="../License.txt">License</a>
+      <a href="#kontakt">Contact</a>
+      <a href="#datenschutz">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy-btn");
+  var code = document.getElementById("cmd-text");
+  btn.addEventListener("click", function () {
+    var text = code.textContent;
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(code);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Selected";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+
+</body>
+</html>

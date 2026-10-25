@@ -105,4 +105,7 @@ Sollte eine Bestimmung dieser Lizenz unwirksam sein, bleibt die
 Wirksamkeit der übrigen Bestimmungen unberührt.
 
 
-Stand: Oktober 2026 · Backroundo Version 1.1
+Stand: Oktober 2026 · Backroundo Version 1.2
+
+Eine englische Übersetzung steht in License.txt. Verbindlich ist diese
+deutsche Fassung.
