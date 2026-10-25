@@ -1,0 +1,108 @@
+BACKROUNDO – FREEWARE-LIZENZ
+============================
+
+Copyright © 2026 Marco Schulz. Alle Rechte vorbehalten.
+Kontakt: marco.sa.schulz@googlemail.com
+
+Mit der Installation oder Nutzung von Backroundo (nachfolgend „Software“)
+erklärst du dich mit diesen Bedingungen einverstanden.
+
+
+1. Nutzungsrecht
+----------------
+Die Software ist Freeware. Du erhältst ein einfaches, unentgeltliches,
+zeitlich unbegrenztes Recht, die Software auf beliebig vielen eigenen
+Geräten für private und berufliche Zwecke zu nutzen.
+
+
+2. Weitergabe
+-------------
+Du darfst die Software kostenlos an andere weitergeben, aber nur
+  a) unverändert,
+  b) vollständig (mit dieser Lizenz und der Anleitung) und
+  c) ohne dafür Geld oder andere Gegenleistungen zu verlangen.
+
+Die Veröffentlichung auf Download-Portalen, Heft-CDs/DVDs oder in
+Software-Sammlungen ist nur mit vorheriger Zustimmung des Urhebers erlaubt.
+
+
+3. Nicht erlaubt
+----------------
+- die Software zu verkaufen, zu vermieten oder in kostenpflichtige
+  Angebote einzubinden,
+- die Software zu verändern, zu übersetzen, zu dekompilieren oder
+  zurückzuentwickeln, soweit dies nicht gesetzlich ausdrücklich erlaubt
+  ist (§ 69e UrhG),
+- Urheber-, Marken- oder Lizenzhinweise zu entfernen oder zu verändern,
+- die Software unter einem anderen Namen oder als eigenes Werk auszugeben.
+
+Alle nicht ausdrücklich eingeräumten Rechte bleiben beim Urheber.
+
+
+4. Bilder und Inhalte Dritter
+-----------------------------
+Backroundo liefert selbst keine Bilder mit, sondern lädt sie aus den
+gewählten Quellen. Die Rechte an den Bildern liegen bei den jeweiligen
+Urheberinnen und Urhebern bzw. Einrichtungen.
+
+Unsplash: Für die Unsplash-Funktion benötigst du einen eigenen,
+kostenlosen Unsplash-Zugang (Access Key). Die Fotos unterliegen der
+Unsplash-Lizenz. Für die Einhaltung der Nutzungs- und API-Bedingungen von
+Unsplash bist du als Inhaber des Access Keys selbst verantwortlich.
+
+Wikimedia Commons: Die Bilder stehen unter freien Lizenzen (z. B. Creative
+Commons) oder sind gemeinfrei. Urheber und Lizenz werden in der App
+angezeigt; die jeweiligen Lizenzbedingungen gelten.
+
+The Metropolitan Museum of Art: Backroundo verwendet nur Werke, die das
+Museum als gemeinfrei (Open Access, CC0) kennzeichnet.
+
+Eigene Bilder: Für Bilder aus deinem eigenen Ordner bist du selbst
+verantwortlich.
+
+„Unsplash“ ist eine Marke der Unsplash Inc., „Wikimedia“ der Wikimedia
+Foundation, „The Met“ des Metropolitan Museum of Art, „Mac“ und „macOS“ sind Marken der Apple Inc.
+Backroundo steht in keiner Verbindung zu diesen Organisationen und wird
+nicht von ihnen unterstützt.
+
+
+5. Gewährleistung und Haftung
+-----------------------------
+Die Software wird unentgeltlich überlassen. Der Urheber haftet daher nur
+für Vorsatz und grobe Fahrlässigkeit. Für Mängel wird nur gehaftet, wenn
+sie arglistig verschwiegen wurden.
+
+Unberührt bleibt die Haftung für Schäden aus der Verletzung des Lebens,
+des Körpers oder der Gesundheit sowie nach dem Produkthaftungsgesetz.
+
+Es wird keine Gewähr dafür übernommen, dass die Software fehlerfrei,
+ununterbrochen oder auf jedem System funktioniert. Die Nutzung erfolgt auf
+eigenes Risiko.
+
+
+6. Datenschutz
+--------------
+Backroundo erhebt, speichert oder überträgt keine personenbezogenen Daten
+an den Urheber. Es gibt keine Werbung, kein Tracking und keine Statistik.
+
+Alle Einstellungen und Bilder werden nur lokal auf deinem Mac gespeichert
+(Einstellungen in den macOS-Benutzereinstellungen, Bilder unter
+~/Bilder/Backroundo).
+
+Je nach gewählten Bildquellen verbindet sich die App direkt mit den Servern
+von Unsplash (api.unsplash.com, images.unsplash.com), Wikimedia
+(commons.wikimedia.org, upload.wikimedia.org) bzw. des Metropolitan Museum (collectionapi.metmuseum.org,
+images.metmuseum.org). Dabei werden technisch notwendige Daten wie deine
+IP-Adresse und ggf. dein eigener Key übermittelt. Hierfür gelten die
+Datenschutzbestimmungen der jeweiligen Anbieter.
+
+
+7. Schlussbestimmungen
+----------------------
+Es gilt das Recht der Bundesrepublik Deutschland.
+
+Sollte eine Bestimmung dieser Lizenz unwirksam sein, bleibt die
+Wirksamkeit der übrigen Bestimmungen unberührt.
+
+
+Stand: Oktober 2026 · Backroundo Version 1.1
