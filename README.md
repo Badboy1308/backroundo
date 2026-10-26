@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://badboy1308.github.io/backroundo/downloads/Backroundo-1.2.dmg"><b>⬇ Download Backroundo 1.2 (DMG, 1.4 MB)</b></a>
+  <a href="https://badboy1308.github.io/backroundo/downloads/Backroundo-1.3.dmg"><b>⬇ Download Backroundo 1.3 (DMG, 1.6 MB)</b></a>
   &nbsp;·&nbsp;
   <a href="https://badboy1308.github.io/backroundo/en/">Website</a>
   &nbsp;·&nbsp;
@@ -39,14 +39,15 @@
   - **The Met** – public-domain landscape and seascape paintings (CC0) – no account needed
   - **Unsplash** – by category or search term (needs your own free key)
   - **Your own folder** – including subfolders
-- **Favorites** with one click, **multiple displays**, **open at login**
+- **Favorites library** – collect images with one click, set them again later, or rotate only through your favorites
+- **Multiple displays**, **open at login**
 - **Credits shown** for every image – author, license and source
 - **No account, no ads, no tracking** – everything stays on your Mac
 - English and German, following your Mac's language
 
 ## Install
 
-1. [Download the DMG](https://badboy1308.github.io/backroundo/downloads/Backroundo-1.2.dmg) and open it.
+1. [Download the DMG](https://badboy1308.github.io/backroundo/downloads/Backroundo-1.3.dmg) and open it.
 2. Drag **Backroundo** to **Applications**.
 3. Launch it – the icon appears in the menu bar.
 
@@ -73,5 +74,5 @@ Feedback and ideas are welcome – open an [issue](../../issues) or write to mar
 
 **Backroundo** ist eine kostenlose Mac-App für die Menüleiste, die dein Hintergrundbild automatisch wechselt – mit Fotos von Wikimedia Commons, gemeinfreien Gemälden aus dem Metropolitan Museum, Unsplash oder deinen eigenen Bildern. Weich überblendet, ohne Konto, ohne Werbung, ohne Tracking.
 
-- [**Backroundo 1.2 laden** (DMG, 1,4 MB)](https://badboy1308.github.io/backroundo/downloads/Backroundo-1.2.dmg) · macOS 13 oder neuer · Apple-Chip & Intel
+- [**Backroundo 1.3 laden** (DMG, 1,6 MB)](https://badboy1308.github.io/backroundo/downloads/Backroundo-1.3.dmg) · macOS 13 oder neuer · Apple-Chip & Intel
 - [Webseite](https://badboy1308.github.io/backroundo/) · [Anleitung (PDF)](Anleitung.pdf) · [Lizenz](Lizenz.txt)

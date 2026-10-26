@@ -103,4 +103,4 @@ If any provision of this license is invalid, the validity of the remaining
 provisions is not affected.
 
 
-Status: October 2026 · Backroundo version 1.2
+Status: October 2026 · Backroundo version 1.3
