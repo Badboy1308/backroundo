@@ -51,6 +51,15 @@ The photos are subject to the Unsplash License. As the holder of the access
 key, you are responsible for complying with Unsplash's terms of use and API
 guidelines.
 
+Pexels: The Pexels feature requires your own free Pexels API key. The
+photos are subject to the Pexels License. As the holder of the key, you are
+responsible for complying with Pexels' terms of use and API guidelines.
+
+Pixabay: The Pixabay feature requires your own free Pixabay API key. The
+photos are subject to the Pixabay Content License. As the holder of the
+key, you are responsible for complying with Pixabay's terms of use and API
+guidelines.
+
 Wikimedia Commons: The images are under free licenses (e.g. Creative
 Commons) or in the public domain. Author and license are shown in the app;
 the respective license terms apply.
@@ -60,9 +69,10 @@ as public domain (Open Access, CC0).
 
 Your own images: You are responsible for images from your own folder.
 
-"Unsplash" is a trademark of Unsplash Inc., "Wikimedia" of the Wikimedia
-Foundation, "The Met" of the Metropolitan Museum of Art, "Mac" and "macOS"
-are trademarks of Apple Inc. Backroundo is not affiliated with or endorsed
+"Unsplash" is a trademark of Unsplash Inc., "Pexels" of Pexels GmbH,
+"Pixabay" of Pixabay GmbH, "Wikimedia" of the Wikimedia Foundation,
+"The Met" of the Metropolitan Museum of Art, "Mac" and "macOS" are
+trademarks of Apple Inc. Backroundo is not affiliated with or endorsed
 by these organizations.
 
 
@@ -88,9 +98,11 @@ All settings and images are stored only locally on your Mac (settings in
 the macOS user defaults, images under ~/Pictures/Backroundo).
 
 Depending on the image sources you choose, the app connects directly to the
-servers of Unsplash (api.unsplash.com, images.unsplash.com), Wikimedia
-(commons.wikimedia.org, upload.wikimedia.org) or the Metropolitan Museum
-(collectionapi.metmuseum.org, images.metmuseum.org). Technically necessary
+servers of Unsplash (api.unsplash.com, images.unsplash.com), Pexels
+(api.pexels.com, images.pexels.com), Pixabay (pixabay.com,
+cdn.pixabay.com), Wikimedia (commons.wikimedia.org, upload.wikimedia.org)
+or the Metropolitan Museum (collectionapi.metmuseum.org,
+images.metmuseum.org). Technically necessary
 data such as your IP address and, if applicable, your own key are
 transmitted. The privacy policies of the respective providers apply.
 
@@ -103,4 +115,4 @@ If any provision of this license is invalid, the validity of the remaining
 provisions is not affected.
 
 
-Status: October 2026 · Backroundo version 1.3
+Status: October 2026 · Backroundo version 1.4
